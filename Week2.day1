@@ -1,0 +1,88 @@
+package week2.Day1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SelenimLaunchpg {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://leaftaps.com/opentaps");
+		//String text1 = driver.findElement(By.tagName("h2")).getText();
+		//System.out.println(text1);
+		
+		driver.findElement(By.id("username")).sendKeys("Demosalesmanager");
+		driver.findElement(By.name("PASSWORD")).sendKeys("crmsfa");
+		driver.findElement(By.className("decorativeSubmit")).click();
+		driver.findElement(By.linkText("CRM/SFA")).click();
+		driver.findElement(By.linkText("Leads")).click();
+		driver.findElement(By.linkText("Create Lead")).click();
+		driver.findElement(By.id("createLeadForm_companyName")).sendKeys("BCBSAO");
+		driver.findElement(By.id("createLeadForm_firstName")).sendKeys("VairavG");
+		 String text = driver.findElement(By.id("createLeadForm_firstName")).getText();
+		  	System.out.println(text);
+		driver.findElement(By.id("createLeadForm_lastName")).sendKeys("G");
+		Select source = new Select(driver.findElement(By.id("createLeadForm_dataSourceId")));
+		source.selectByVisibleText("Employee");
+		Select campaign = new Select(driver.findElement(By.id("createLeadForm_marketingCampaignId")));
+		campaign.selectByVisibleText("Car and Driver");
+		Select currency = new Select(driver.findElement(By.id("createLeadForm_currencyUomId")));
+		currency.selectByVisibleText("CAD - Canadian Dollar");
+		Select industry = new Select(driver.findElement(By.id("createLeadForm_industryEnumId")));
+		industry.selectByVisibleText("Computer Software");
+		Select ownership = new Select(driver.findElement(By.id("createLeadForm_ownershipEnumId")));
+		ownership.selectByVisibleText("LLC/LLP");
+		driver.findElement(By.name("firstNameLocal")).sendKeys("GG");
+		driver.findElement(By.name("lastNameLocal")).sendKeys("GGH");
+		driver.findElement(By.id("createLeadForm_personalTitle")).sendKeys("TEST");
+		driver.findElement(By.id("createLeadForm_birthDate")).sendKeys("05/02/1982");
+		driver.findElement(By.id("createLeadForm_generalProfTitle")).sendKeys("MR");
+		driver.findElement(By.id("createLeadForm_departmentName")).sendKeys("QA");
+		driver.findElement(By.id("createLeadForm_annualRevenue")).sendKeys("70000");
+		driver.findElement(By.id("createLeadForm_numberEmployees")).sendKeys("12500");
+		driver.findElement(By.id("createLeadForm_sicCode")).sendKeys("NAC1024");
+		driver.findElement(By.id("createLeadForm_tickerSymbol")).sendKeys("Symboltest");
+		driver.findElement(By.id("createLeadForm_description")).sendKeys("Descriptiontest");
+		driver.findElement(By.id("createLeadForm_importantNote")).sendKeys("NOTE test");
+		driver.findElement(By.id("createLeadForm_primaryPhoneAreaCode")).sendKeys("919");
+		driver.findElement(By.id("createLeadForm_primaryPhoneNumber")).sendKeys("2350428");
+		driver.findElement(By.id("createLeadForm_primaryPhoneExtension")).sendKeys("456");
+		driver.findElement(By.id("createLeadForm_primaryPhoneAskForName")).sendKeys("Home Owner");
+		driver.findElement(By.id("createLeadForm_primaryEmail")).sendKeys("Abc@gmail.com");
+		driver.findElement(By.id("createLeadForm_primaryEmail")).sendKeys("www.abc.net");
+		driver.findElement(By.id("createLeadForm_generalToName")).sendKeys("Ghost");
+		driver.findElement(By.id("createLeadForm_generalAttnName")).sendKeys("Ksushi");
+		driver.findElement(By.id("createLeadForm_generalAddress1")).sendKeys("641 SNOW CREST");
+		driver.findElement(By.id("createLeadForm_generalAddress1")).sendKeys("1234");
+		driver.findElement(By.id("createLeadForm_generalCity")).sendKeys("Springfield");
+		Select state = new Select(driver.findElement(By.id("createLeadForm_generalStateProvinceGeoId")));
+		state.selectByVisibleText("North Carolina");
+		driver.findElement(By.id("createLeadForm_generalPostalCode")).sendKeys("27707");
+		driver.findElement(By.id("createLeadForm_generalPostalCodeExt")).sendKeys("6413");
+		Select country = new Select(driver.findElement(By.id("createLeadForm_generalCountryGeoId")));
+		country.selectByVisibleText("United States");
+				
+			driver.findElement(By.name("submitButton")).click();
+			
+			String text3 = driver.findElement(By.id("viewLead_firstName_sp")).getText();
+			System.out.println(text3);
+			String text2 = driver.findElement(By.id("sectionHeaderTitle_leads")).getText();
+	if (text2.equalsIgnoreCase("View Lead")) {
+		System.out.println("Yes title is View Lead ");
+	}
+	else {
+				
+		
+		System.out.println("Yes title is NOT View Lead ");
+		
+	}
+	}
+}
